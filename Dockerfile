@@ -10,7 +10,8 @@ ENV     TZ=Europe/Berlin
 RUN     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Deploy DNSSEC workshop material
-RUN     cd /root && git clone https://github.com/dnssec-workshop/dnssec-data && rsync -v -rptgoD --copy-links /root/dnssec-data/dnssec-rootns-a/ /
+RUN     cd /root && git clone https://github.com/dnssec-workshop/dnssec-data && \
+          rsync -v -rptgoD --copy-links /root/dnssec-data/dnssec-rootns-a/ /
 
 # Start services using supervisor
 RUN     mkdir -p /var/log/supervisor
